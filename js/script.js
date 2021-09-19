@@ -24,6 +24,14 @@ const personalMovieDB = {
 	privat: false,
 }
 
+function checkPrivat(hide) {
+	if (!hide) {
+		console.log(personalMovieDB)
+	}
+}
+
+checkPrivat(personalMovieDB.privat)
+
 function detectPersonalLevel() {
 	if (personalMovieDB.count <= 10) {
 		alert('Мало просмотренных фильмов')
@@ -35,6 +43,15 @@ function detectPersonalLevel() {
 }
 
 detectPersonalLevel()
+
+function writeYourGenres() {
+	for (let i = 1; i <= 3; i++) {
+		const genre = prompt(`Ваш любимый жанр по порядку ${i}`)
+		personalMovieDB.genres[i - 1] = genre
+	}
+}
+
+writeYourGenres()
 
 function rememberMyFilms() {
 	for (let i = 0; i < 2; i++) {
