@@ -8,19 +8,43 @@
 Реализовать только при помощи JS
 
 4) Список фильмов на странице сформировать на основании данных из этого JS файла.
-Отсортировать их по алфавиту 
+Отсортировать их по алфавиту
 
 5) Добавить нумерацию выведенных фильмов */
 
-'use strict';
+'use strict'
 
 const movieDB = {
-    movies: [
-        "Логан",
-        "Лига справедливости",
-        "Ла-ла лэнд",
-        "Одержимость",
-        "Скотт Пилигрим против..."
-    ]
-};
+	movies: [
+		'Логан',
+		'Лига справедливости',
+		'Ла-ла лэнд',
+		'Одержимость',
+		'Скотт Пилигрим против...',
+	],
+}
 
+const adv = document.querySelectorAll('.promo__adv img'),
+	poster = document.querySelector('.promo__bg'),
+	genres = poster.querySelector('.promo__genre'),
+	filmList = document.querySelector('.promo__interactive-list')
+
+genres.textContent = 'Драма'
+
+adv.forEach((item) => {
+	item.remove()
+})
+
+filmList.innerHTML = ''
+
+poster.style.backgroundImage = 'url(../img/bg.jpg)'
+
+movieDB.movies.sort()
+
+movieDB.movies.forEach((film, i) => {
+	filmList.innerHTML += `
+    <li class="promo__interactive-item">${i + 1}. ${film}
+                            <div class="delete"></div>
+             </li>
+                        `
+})
